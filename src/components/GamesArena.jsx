@@ -1,59 +1,43 @@
 import React, { useState } from 'react';
-import { Gamepad2, Swords, Trophy, Shield, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Gamepad2, Swords, Shield, CheckCircle2, ChevronRight, ArrowUpRight } from 'lucide-react';
 
-export default function GamesArena({ onRegisterGame }) {
+export default function GamesArena() {
   const [activeTab, setActiveTab] = useState('fc27');
   const [showRules, setShowRules] = useState(false);
 
   const gameData = {
     fc27: {
-      id: 'fc27',
       name: 'EA SPORTS FC 27',
-      badge: 'FOOTBALL SIMULATION',
-      tagline: '1v1 Tactical Virtual Football Championship',
+      badge: '1v1 TACTICAL FOOTBALL',
       banner: '/images/fc27-banner.jpg',
-      platform: 'PlayStation 5 Official Stations',
-      mode: '1v1 Competitive Knockout',
-      format: 'Qualifiers in 1st Quarter ➔ Semis in 2nd Quarter ➔ Finals in 3rd Quarter',
-      duration: '6 Minutes Per Half (Standard Settings)',
-      description: 'Experience competitive virtual football on next-gen PS5 stations. Tactical defending, standard rated clubs, and high-tension penalty shootouts under the spotlight of Career Connect 26.',
-      rules: [
-        'Match Type: 1v1 Exhibition (Standard Club & National squads, 95 overall mode)',
-        'Half Duration: 6 minutes each half (Tactical Defending strictly required)',
-        'Qualifying rounds take place in the 1st quarter of the tournament day',
-        'DualSense controllers provided, or bring certified tournament USB pads',
-        'Ties in knockout stage go directly to Extra Time and Penalties',
-      ],
-      highlights: [
+      quickSpecs: [
         { label: 'Platform', val: 'PS5 Official' },
-        { label: 'Match Format', val: '1v1 Knockout' },
-        { label: 'Half Length', val: '6 Mins / Half' },
-        { label: 'Ruleset', val: 'Standard Defending' },
+        { label: 'Duration', val: '6 Min / Half' },
+        { label: 'Defense', val: 'Tactical Only' },
+        { label: 'Format', val: '1v1 Knockout' },
+      ],
+      rules: [
+        '95 Overall mode with default club & national squads',
+        '6 minutes per half; tactical defending strictly enforced',
+        'Qualifiers in 1st quarter, semis in 2nd, final in 3rd quarter',
+        'DualSense controllers provided, or bring certified USB pads',
       ],
     },
     tekken8: {
-      id: 'tekken8',
       name: 'TEKKEN 8',
-      badge: 'FIGHTING GAME CHAMPIONSHIP',
-      tagline: 'Fist Meets Fate • Aggressive Combat on the Big Stage',
+      badge: '1v1 FIGHTING SHOWDOWN',
       banner: '/images/tekken8-banner.jpg',
-      platform: 'PlayStation 5 Official Stations',
-      mode: '1v1 Double Elimination Bracket',
-      format: 'Qualifiers in 1st Quarter ➔ Semis in 2nd Quarter ➔ Finals in 3rd Quarter',
-      duration: 'Best of 3 Rounds (Finals: Best of 5)',
-      description: 'Unleash devastating combos and mastery of the Heat System in TEKKEN 8. Battle through double-elimination brackets in front of the UBIT crowd to become the inaugural champion.',
-      rules: [
-        'Rounds: Best 2 out of 3 Rounds (60 seconds per round)',
-        'Stage: Random for Game 1, loser selects stage/character for Game 2',
-        'Qualifying rounds in 1st quarter, semifinals in 2nd, grand finals in 3rd quarter',
-        'Hardware: DualSense pads, fight sticks, and leverless controllers permitted upon check-in inspection',
-        'Character lock: Winner must keep previous character',
-      ],
-      highlights: [
+      quickSpecs: [
         { label: 'Engine', val: 'Unreal Engine 5' },
+        { label: 'Rounds', val: 'Best of 3 (Finals: Bo5)' },
+        { label: 'Timer', val: '60s / Round' },
         { label: 'Format', val: 'Double Elimination' },
-        { label: 'Round Timer', val: '60 Seconds' },
-        { label: 'Hardware', val: 'Pads & Sticks Allowed' },
+      ],
+      rules: [
+        '3 Rounds to win (60 seconds per round)',
+        'Qualifiers in 1st quarter, semis in 2nd, final in 3rd quarter',
+        'DualSense pads and arcade fight sticks allowed upon check-in',
+        'Winner character lock; loser counterpicks stage or fighter',
       ],
     },
   };
@@ -63,90 +47,88 @@ export default function GamesArena({ onRegisterGame }) {
   return (
     <section id="games" style={styles.section}>
       <div className="container">
-        {/* Header */}
+        {/* Section Header */}
         <div style={styles.header}>
-          <div className="section-badge">OFFICIAL TITLES</div>
-          <h2 className="section-heading">FEATURED COMPETITIVE GAMES</h2>
-          <p className="section-subtitle">
-            Compete on verified PlayStation 5 hardware provided in collaboration with Venture Games.
+          <div className="section-tag">COMPETITIVE ROSTER</div>
+          <h2 className="section-title">THE ARENA TITLES</h2>
+          <p className="section-desc">
+            Competitive PlayStation 5 tournament stations powered by Venture Games.
           </p>
 
-          {/* Switcher */}
-          <div style={styles.tabBar}>
+          {/* Tab Switcher */}
+          <div style={styles.tabContainer}>
             <button
               style={{
                 ...styles.tabBtn,
-                backgroundColor: activeTab === 'fc27' ? '#ff2a51' : 'transparent',
-                color: activeTab === 'fc27' ? '#ffffff' : '#94a3b8',
+                backgroundColor: activeTab === 'fc27' ? '#ff1e42' : 'transparent',
+                color: activeTab === 'fc27' ? '#ffffff' : '#71717a',
               }}
               onClick={() => setActiveTab('fc27')}
             >
-              <Gamepad2 size={17} />
+              <Gamepad2 size={16} />
               <span>EA SPORTS FC 27</span>
             </button>
             <button
               style={{
                 ...styles.tabBtn,
-                backgroundColor: activeTab === 'tekken8' ? '#ff2a51' : 'transparent',
-                color: activeTab === 'tekken8' ? '#ffffff' : '#94a3b8',
+                backgroundColor: activeTab === 'tekken8' ? '#ff1e42' : 'transparent',
+                color: activeTab === 'tekken8' ? '#ffffff' : '#71717a',
               }}
               onClick={() => setActiveTab('tekken8')}
             >
-              <Swords size={17} />
+              <Swords size={16} />
               <span>TEKKEN 8</span>
             </button>
           </div>
         </div>
 
-        {/* Game Card */}
-        <div className="pro-card" style={styles.card}>
-          <div style={styles.bannerWrapper}>
+        {/* Card */}
+        <div className="minimal-card" style={styles.card}>
+          <div style={styles.bannerBox}>
             <img src={current.banner} alt={current.name} style={styles.bannerImg} />
             <div style={styles.bannerOverlay} />
-            <div style={styles.bannerBadge}>
-              <span>{current.badge}</span>
-            </div>
+            <div style={styles.badge}>{current.badge}</div>
           </div>
 
-          <div style={styles.cardBody}>
-            <div style={styles.topRow}>
-              <div>
-                <h3 style={styles.gameTitle}>{current.name}</h3>
-                <p style={styles.gameTagline}>{current.tagline}</p>
-              </div>
-              <button
-                className="btn btn-primary"
-                onClick={() => onRegisterGame(current.id)}
+          <div style={styles.body}>
+            <div style={styles.titleRow}>
+              <h3 style={styles.gameTitle}>{current.name}</h3>
+              <a
+                href="https://instagram.com/onyxevo2026/"
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-crimson"
+                style={{ padding: '8px 16px', fontSize: '0.82rem' }}
               >
-                <Trophy size={16} />
-                <span>Register for {activeTab === 'fc27' ? 'FC 27' : 'TEKKEN 8'}</span>
-              </button>
+                <span>Register on IG</span>
+                <ArrowUpRight size={14} />
+              </a>
             </div>
 
-            <p style={styles.desc}>{current.description}</p>
-
-            {/* Highlights */}
-            <div style={styles.highlightsGrid}>
-              {current.highlights.map((h, i) => (
-                <div key={i} style={styles.hlCard}>
-                  <span style={styles.hlLabel}>{h.label}</span>
-                  <span style={styles.hlVal}>{h.val}</span>
+            {/* Quick Specs */}
+            <div style={styles.specsGrid}>
+              {current.quickSpecs.map((s, idx) => (
+                <div key={idx} style={styles.specBox}>
+                  <span style={styles.specLabel}>{s.label}</span>
+                  <strong style={styles.specVal}>{s.val}</strong>
                 </div>
               ))}
             </div>
 
-            {/* Rules Accordion */}
+            {/* Rulebook Toggle */}
             <div style={styles.rulesBox}>
               <button
-                style={styles.rulesHeader}
+                style={styles.rulesBtn}
                 onClick={() => setShowRules(!showRules)}
+                aria-expanded={showRules}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Shield size={16} color="#06b6d4" />
-                  <span style={{ fontWeight: 600 }}>Official Tournament Rules & Format</span>
+                  <Shield size={15} color="#ff1e42" />
+                  <span style={{ fontWeight: 600, fontSize: '0.86rem' }}>Official Match Rules</span>
                 </div>
                 <ChevronRight
-                  size={16}
+                  size={15}
+                  color="#71717a"
                   style={{
                     transform: showRules ? 'rotate(90deg)' : 'none',
                     transition: 'transform 0.2s',
@@ -155,10 +137,10 @@ export default function GamesArena({ onRegisterGame }) {
               </button>
 
               {showRules && (
-                <div style={styles.rulesContent}>
+                <div style={styles.rulesList}>
                   {current.rules.map((rule, idx) => (
                     <div key={idx} style={styles.ruleItem}>
-                      <CheckCircle2 size={16} color="#ff2a51" style={{ flexShrink: 0, marginTop: '2px' }} />
+                      <CheckCircle2 size={14} color="#ff1e42" style={{ flexShrink: 0, marginTop: '3px' }} />
                       <span>{rule}</span>
                     </div>
                   ))}
@@ -178,37 +160,37 @@ const styles = {
   },
   header: {
     textAlign: 'center',
-    marginBottom: '36px',
+    marginBottom: '32px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
-  tabBar: {
+  tabContainer: {
     display: 'inline-flex',
-    background: 'rgba(255, 255, 255, 0.05)',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
-    borderRadius: '12px',
-    padding: '4px',
-    marginTop: '20px',
+    background: 'rgba(255, 255, 255, 0.03)',
+    border: '1px solid rgba(255, 255, 255, 0.08)',
+    borderRadius: '10px',
+    padding: '3px',
+    marginTop: '18px',
   },
   tabBtn: {
     display: 'inline-flex',
     alignItems: 'center',
-    gap: '8px',
-    padding: '10px 20px',
-    borderRadius: '8px',
-    fontSize: '0.9rem',
+    gap: '6px',
+    padding: '8px 18px',
+    borderRadius: '7px',
+    fontSize: '0.84rem',
     fontWeight: 600,
     border: 'none',
     cursor: 'pointer',
-    transition: 'all 0.2s ease',
+    transition: 'all 0.2s',
   },
   card: {
     overflow: 'hidden',
   },
-  bannerWrapper: {
+  bannerBox: {
     position: 'relative',
-    height: '360px',
+    height: 'clamp(220px, 32vw, 340px)',
     width: '100%',
     overflow: 'hidden',
   },
@@ -223,110 +205,96 @@ const styles = {
     left: 0,
     width: '100%',
     height: '100%',
-    background: 'linear-gradient(180deg, rgba(8, 9, 13, 0.1) 0%, rgba(8, 9, 13, 0.95) 100%)',
+    background: 'linear-gradient(180deg, rgba(6, 6, 8, 0.1) 0%, rgba(6, 6, 8, 0.95) 100%)',
   },
-  bannerBadge: {
+  badge: {
     position: 'absolute',
-    top: '20px',
-    left: '20px',
-    background: 'rgba(15, 17, 24, 0.85)',
+    top: '16px',
+    left: '16px',
+    background: 'rgba(12, 13, 17, 0.85)',
     border: '1px solid rgba(255, 255, 255, 0.12)',
-    padding: '6px 14px',
+    padding: '4px 12px',
     borderRadius: '999px',
-    fontSize: '0.75rem',
+    fontSize: '0.68rem',
     fontWeight: 700,
     letterSpacing: '0.06em',
     color: '#ffffff',
     backdropFilter: 'blur(8px)',
   },
-  cardBody: {
-    padding: '28px 32px',
+  body: {
+    padding: '24px 20px',
   },
-  topRow: {
+  titleRow: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
     flexWrap: 'wrap',
-    gap: '16px',
-    marginBottom: '16px',
+    gap: '12px',
+    marginBottom: '18px',
   },
   gameTitle: {
     fontFamily: 'var(--font-display)',
-    fontSize: '1.8rem',
-    fontWeight: 700,
+    fontSize: '1.5rem',
+    fontWeight: 800,
     color: '#ffffff',
     letterSpacing: '-0.02em',
   },
-  gameTagline: {
-    fontSize: '0.92rem',
-    color: '#06b6d4',
-    marginTop: '2px',
-  },
-  desc: {
-    fontSize: '0.98rem',
-    color: '#cbd5e1',
-    lineHeight: 1.6,
-    maxWidth: '850px',
-    marginBottom: '20px',
-  },
-  highlightsGrid: {
+  specsGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-    gap: '12px',
-    marginBottom: '20px',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+    gap: '10px',
+    marginBottom: '18px',
   },
-  hlCard: {
-    background: 'rgba(255, 255, 255, 0.03)',
-    border: '1px solid rgba(255, 255, 255, 0.08)',
-    borderRadius: '10px',
-    padding: '12px 16px',
+  specBox: {
+    background: 'rgba(255, 255, 255, 0.02)',
+    border: '1px solid rgba(255, 255, 255, 0.06)',
+    borderRadius: '8px',
+    padding: '10px 12px',
     display: 'flex',
     flexDirection: 'column',
-    gap: '4px',
+    gap: '2px',
   },
-  hlLabel: {
-    fontSize: '0.75rem',
+  specLabel: {
+    fontSize: '0.68rem',
     fontWeight: 600,
-    color: '#94a3b8',
+    color: '#71717a',
     textTransform: 'uppercase',
   },
-  hlVal: {
-    fontSize: '0.95rem',
-    fontWeight: 700,
+  specVal: {
+    fontSize: '0.88rem',
     color: '#ffffff',
   },
   rulesBox: {
     background: 'rgba(255, 255, 255, 0.02)',
-    border: '1px solid rgba(255, 255, 255, 0.08)',
+    border: '1px solid rgba(255, 255, 255, 0.06)',
     borderRadius: '10px',
     overflow: 'hidden',
   },
-  rulesHeader: {
+  rulesBtn: {
     width: '100%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '14px 18px',
+    padding: '12px 16px',
     background: 'transparent',
     border: 'none',
     color: '#ffffff',
-    fontSize: '0.92rem',
     cursor: 'pointer',
     textAlign: 'left',
   },
-  rulesContent: {
-    padding: '14px 18px 18px 18px',
-    borderTop: '1px solid rgba(255, 255, 255, 0.06)',
+  rulesList: {
+    padding: '12px 16px 16px 16px',
+    borderTop: '1px solid rgba(255, 255, 255, 0.04)',
     display: 'flex',
     flexDirection: 'column',
-    gap: '10px',
+    gap: '8px',
   },
   ruleItem: {
     display: 'flex',
     alignItems: 'flex-start',
-    gap: '10px',
-    fontSize: '0.9rem',
-    color: '#cbd5e1',
-    lineHeight: 1.5,
+    gap: '8px',
+    fontSize: '0.84rem',
+    color: '#a1a1aa',
+    lineHeight: 1.45,
   },
 };

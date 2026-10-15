@@ -1,46 +1,44 @@
 import React from 'react';
-import { Handshake, Building2, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Sparkles, Building2, CheckCircle2 } from 'lucide-react';
 
 export default function Collaboration() {
   return (
     <section id="collaboration" style={styles.section}>
       <div className="container">
         <div style={styles.header}>
-          <div className="section-badge">STRATEGIC PARTNERSHIP</div>
-          <h2 className="section-heading">VENTURE GAMES COLLABORATION</h2>
-          <p className="section-subtitle">
-            Partnering with Venture Games to provide certified PlayStation 5 tournament stations and competitive management.
+          <div className="section-tag">STRATEGIC ALLIANCE</div>
+          <h2 className="section-title">VENTURE GAMES COLLABORATION</h2>
+          <p className="section-desc">
+            Bringing certified PlayStation 5 tournament stations and pro-tier competitive standards to UBIT.
           </p>
         </div>
 
         <div style={styles.grid}>
           {/* Main Venture Games Card */}
-          <div className="pro-card" style={styles.mainCard}>
-            <div style={styles.partnerFlex}>
+          <div className="minimal-card" style={styles.mainCard}>
+            <div style={styles.flexRow}>
               <div style={styles.logoWrap}>
                 <img
                   src="/images/venture-games-logo.jpg"
-                  alt="Venture Games Logo"
-                  style={styles.partnerLogo}
+                  alt="Venture Games"
+                  style={styles.logoImg}
                 />
               </div>
+
               <div style={styles.details}>
-                <div style={styles.partnerTag}>OFFICIAL ESPORTS COLLABORATOR</div>
-                <h3 style={styles.partnerName}>VENTURE GAMES</h3>
-                <p style={styles.partnerBio}>
-                  Providing official gaming setups, pro-tier displays, and certified competitive operations to ensure fair, broadcast-ready match play at UBIT.
-                </p>
-                <div style={styles.points}>
-                  <div style={styles.point}>
-                    <CheckCircle2 size={16} color="#ff2a51" />
-                    <span>Official PlayStation 5 Tournament Stations</span>
+                <div style={styles.tag}>OFFICIAL ESPORTS COLLABORATOR</div>
+                <h3 style={styles.name}>VENTURE GAMES</h3>
+                <div style={styles.perks}>
+                  <div style={styles.perk}>
+                    <CheckCircle2 size={14} color="#ff1e42" />
+                    <span>Official PS5 Tournament Stations</span>
                   </div>
-                  <div style={styles.point}>
-                    <CheckCircle2 size={16} color="#ff2a51" />
-                    <span>Certified Controllers & Display Gear</span>
+                  <div style={styles.perk}>
+                    <CheckCircle2 size={14} color="#ff1e42" />
+                    <span>Certified Controllers & High-Refresh Displays</span>
                   </div>
-                  <div style={styles.point}>
-                    <CheckCircle2 size={16} color="#ff2a51" />
+                  <div style={styles.perk}>
+                    <CheckCircle2 size={14} color="#ff1e42" />
                     <span>Standardized Competitive Fair Play Rules</span>
                   </div>
                 </div>
@@ -48,24 +46,25 @@ export default function Collaboration() {
             </div>
           </div>
 
-          {/* Sub cards */}
-          <div className="pro-card" style={styles.subCard}>
+          {/* Sub Card: Career Connect */}
+          <div className="minimal-card" style={styles.subCard}>
             <div style={styles.subHeader}>
-              <Sparkles size={20} color="#ff2a51" />
+              <Sparkles size={16} color="#ff1e42" />
               <h4 style={styles.subTitle}>CAREER CONNECT '26</h4>
             </div>
             <p style={styles.subText}>
-              The parent flagship initiative at UBIT connecting student innovation, industry opportunities, and competitive esports.
+              UBIT's flagship module connecting student innovation and esports.
             </p>
           </div>
 
-          <div className="pro-card" style={styles.subCard}>
+          {/* Sub Card: DCS - UBIT */}
+          <div className="minimal-card" style={styles.subCard}>
             <div style={styles.subHeader}>
-              <Building2 size={20} color="#06b6d4" />
-              <h4 style={styles.subTitle}>DCS - UBIT HOST</h4>
+              <Building2 size={16} color="#ff1e42" />
+              <h4 style={styles.subTitle}>DCS - UBIT</h4>
             </div>
             <p style={styles.subText}>
-              Department of Computer Science (UBIT), University of Karachi — hosting the historic first-ever esports platform in campus history.
+              Department of Computer Science, University of Karachi — Host campus.
             </p>
           </div>
         </div>
@@ -77,11 +76,10 @@ export default function Collaboration() {
 const styles = {
   section: {
     padding: '70px 0',
-    background: 'rgba(8, 9, 13, 0.6)',
   },
   header: {
     textAlign: 'center',
-    marginBottom: '40px',
+    marginBottom: '36px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -89,86 +87,84 @@ const styles = {
   grid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(12, 1fr)',
-    gap: '20px',
+    gap: '16px',
   },
   mainCard: {
     gridColumn: 'span 12',
-    padding: '32px',
+    padding: '24px',
   },
-  partnerFlex: {
+  flexRow: {
     display: 'flex',
     alignItems: 'center',
-    gap: '28px',
+    gap: '20px',
     flexWrap: 'wrap',
   },
   logoWrap: {
-    width: '120px',
-    height: '120px',
-    borderRadius: '16px',
+    width: '90px',
+    height: '90px',
+    borderRadius: '12px',
     overflow: 'hidden',
-    border: '1px solid rgba(255, 255, 255, 0.15)',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
     flexShrink: 0,
   },
-  partnerLogo: {
+  logoImg: {
     width: '100%',
     height: '100%',
     objectFit: 'cover',
   },
   details: {
     flex: '1',
-    minWidth: '280px',
+    minWidth: '240px',
   },
-  partnerTag: {
-    fontSize: '0.75rem',
+  tag: {
+    fontSize: '0.68rem',
     fontWeight: 700,
     letterSpacing: '0.08em',
-    color: '#06b6d4',
+    color: '#ff1e42',
     marginBottom: '4px',
   },
-  partnerName: {
+  name: {
     fontFamily: 'var(--font-display)',
-    fontSize: '1.6rem',
-    fontWeight: 700,
+    fontSize: '1.4rem',
+    fontWeight: 800,
     color: '#ffffff',
-    marginBottom: '8px',
+    letterSpacing: '-0.02em',
+    marginBottom: '10px',
   },
-  partnerBio: {
-    fontSize: '0.95rem',
-    color: '#cbd5e1',
-    lineHeight: 1.6,
-    marginBottom: '16px',
-  },
-  points: {
+  perks: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: '16px',
+    gap: '12px 18px',
   },
-  point: {
+  perk: {
     display: 'flex',
     alignItems: 'center',
-    gap: '8px',
-    fontSize: '0.88rem',
-    color: '#e2e8f0',
+    gap: '6px',
+    fontSize: '0.84rem',
+    color: '#e4e4e7',
   },
   subCard: {
     gridColumn: 'span 6',
-    padding: '24px',
+    padding: '20px',
+    '@media (max-width: 768px)': {
+      gridColumn: 'span 12',
+    },
   },
   subHeader: {
     display: 'flex',
     alignItems: 'center',
-    gap: '10px',
-    marginBottom: '10px',
+    gap: '8px',
+    marginBottom: '6px',
   },
   subTitle: {
     fontFamily: 'var(--font-display)',
-    fontSize: '1.1rem',
+    fontSize: '1rem',
     fontWeight: 700,
     color: '#ffffff',
   },
   subText: {
-    fontSize: '0.9rem',
-    color: '#94a3b8',
-    lineHeight: 1.55,
+    fontSize: '0.84rem',
+    color: '#a1a1aa',
+    lineHeight: 1.5,
   },
 };
