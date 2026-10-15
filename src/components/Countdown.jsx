@@ -33,11 +33,11 @@ export default function Countdown() {
 
   return (
     <div style={styles.card}>
-      {/* Top Header Tags */}
-      <div style={styles.badgeRow}>
-        <div style={styles.deadlineBadge}>
-          <AlertTriangle size={13} color="#ff1e42" />
-          <span>REGISTRATION CLOSES 21 OCT</span>
+      {/* Top Warning Banner */}
+      <div style={styles.topBanner}>
+        <div style={styles.warningBadge}>
+          <AlertTriangle size={13} color="#ff0033" />
+          <span>REGISTRATION DEADLINE: 21 OCT</span>
         </div>
         <div style={styles.eventBadge}>
           <Calendar size={13} color="#ffffff" />
@@ -45,37 +45,37 @@ export default function Countdown() {
         </div>
       </div>
 
-      {/* Countdown Digits */}
-      <div style={styles.digitsRow}>
-        <div style={styles.digitBox}>
-          <span style={styles.number}>{pad(timeLeft.days)}</span>
-          <span style={styles.label}>Days</span>
+      {/* Digits Grid */}
+      <div style={styles.digitsGrid}>
+        <div style={styles.box}>
+          <span style={styles.val}>{pad(timeLeft.days)}</span>
+          <span style={styles.unit}>DAYS</span>
         </div>
         <span style={styles.colon}>:</span>
-        <div style={styles.digitBox}>
-          <span style={styles.number}>{pad(timeLeft.hours)}</span>
-          <span style={styles.label}>Hours</span>
+        <div style={styles.box}>
+          <span style={styles.val}>{pad(timeLeft.hours)}</span>
+          <span style={styles.unit}>HRS</span>
         </div>
         <span style={styles.colon}>:</span>
-        <div style={styles.digitBox}>
-          <span style={styles.number}>{pad(timeLeft.minutes)}</span>
-          <span style={styles.label}>Mins</span>
+        <div style={styles.box}>
+          <span style={styles.val}>{pad(timeLeft.minutes)}</span>
+          <span style={styles.unit}>MINS</span>
         </div>
         <span style={styles.colon}>:</span>
-        <div style={{ ...styles.digitBox, background: 'rgba(255, 30, 66, 0.08)', borderColor: 'rgba(255, 30, 66, 0.35)' }}>
-          <span style={{ ...styles.number, color: '#ff1e42' }}>{pad(timeLeft.seconds)}</span>
-          <span style={{ ...styles.label, color: '#ff476b' }}>Secs</span>
+        <div style={{ ...styles.box, background: 'rgba(255, 0, 51, 0.12)', borderColor: '#ff0033' }}>
+          <span style={{ ...styles.val, color: '#ff0033' }}>{pad(timeLeft.seconds)}</span>
+          <span style={{ ...styles.unit, color: '#ff4d6d' }}>SECS</span>
         </div>
       </div>
 
-      {/* Bottom Sub-meta */}
-      <div style={styles.bottomMeta}>
-        <div style={styles.metaItem}>
-          <Clock size={14} color="#ff1e42" />
+      {/* Meta Footer */}
+      <div style={styles.metaRow}>
+        <div style={styles.metaCol}>
+          <Clock size={13} color="#ff0033" />
           <span>10:00 AM – 4:00 PM</span>
         </div>
-        <span style={styles.dot}>•</span>
-        <span>UBIT Department, Karachi University</span>
+        <span style={{ color: '#52525b' }}>•</span>
+        <span>UBIT Department, University of Karachi</span>
       </div>
     </div>
   );
@@ -83,112 +83,111 @@ export default function Countdown() {
 
 const styles = {
   card: {
-    background: 'rgba(14, 15, 21, 0.85)',
-    border: '1px solid rgba(255, 255, 255, 0.08)',
-    borderTop: '2px solid #ff1e42',
-    borderRadius: '16px',
-    padding: '24px 16px',
-    maxWidth: '680px',
+    background: 'rgba(10, 10, 14, 0.95)',
+    border: '1px solid rgba(255, 0, 51, 0.35)',
+    borderTop: '3px solid #ff0033',
+    borderRadius: '8px',
+    padding: '20px 14px',
+    maxWidth: '640px',
     width: '100%',
     margin: '0 auto',
-    boxShadow: '0 20px 50px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 30, 66, 0.1)',
-    backdropFilter: 'blur(16px)',
+    boxShadow: '0 15px 40px rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 0, 51, 0.15)',
     textAlign: 'center',
   },
-  badgeRow: {
+  topBanner: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     gap: '8px',
     flexWrap: 'wrap',
-    marginBottom: '18px',
+    marginBottom: '16px',
   },
-  deadlineBadge: {
+  warningBadge: {
     display: 'inline-flex',
     alignItems: 'center',
     gap: '6px',
+    fontFamily: 'var(--font-display)',
     fontSize: '0.72rem',
-    fontWeight: 700,
+    fontWeight: 800,
     letterSpacing: '0.06em',
-    color: '#ff1e42',
-    background: 'rgba(255, 30, 66, 0.1)',
-    border: '1px solid rgba(255, 30, 66, 0.3)',
+    color: '#ff0033',
+    background: 'rgba(255, 0, 51, 0.12)',
+    border: '1px solid rgba(255, 0, 51, 0.35)',
     padding: '4px 10px',
-    borderRadius: '999px',
+    borderRadius: '4px',
   },
   eventBadge: {
     display: 'inline-flex',
     alignItems: 'center',
     gap: '6px',
+    fontFamily: 'var(--font-display)',
     fontSize: '0.72rem',
-    fontWeight: 600,
-    color: '#f4f4f5',
-    background: 'rgba(255, 255, 255, 0.05)',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
+    fontWeight: 700,
+    letterSpacing: '0.04em',
+    color: '#d4d4d8',
+    background: 'rgba(255, 255, 255, 0.04)',
+    border: '1px solid rgba(255, 255, 255, 0.08)',
     padding: '4px 10px',
-    borderRadius: '999px',
+    borderRadius: '4px',
   },
-  digitsRow: {
+  digitsGrid: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: '8px',
-    marginBottom: '20px',
+    gap: '6px',
+    marginBottom: '16px',
   },
-  digitBox: {
+  box: {
     flex: '1',
-    maxWidth: '95px',
-    minWidth: '55px',
-    background: 'rgba(255, 255, 255, 0.02)',
+    maxWidth: '85px',
+    minWidth: '50px',
+    background: '#050508',
     border: '1px solid rgba(255, 255, 255, 0.08)',
-    borderRadius: '12px',
-    padding: '12px 4px',
+    borderRadius: '6px',
+    padding: '10px 4px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
-  number: {
+  val: {
     fontFamily: 'var(--font-display)',
-    fontSize: 'clamp(1.6rem, 5vw, 2.6rem)',
-    fontWeight: 800,
+    fontSize: 'clamp(1.5rem, 5vw, 2.4rem)',
+    fontWeight: 900,
     color: '#ffffff',
     lineHeight: 1,
     letterSpacing: '-0.02em',
     marginBottom: '4px',
   },
-  label: {
-    fontSize: '0.68rem',
-    fontWeight: 600,
-    letterSpacing: '0.04em',
+  unit: {
+    fontFamily: 'var(--font-display)',
+    fontSize: '0.62rem',
+    fontWeight: 800,
+    letterSpacing: '0.06em',
     color: '#71717a',
-    textTransform: 'uppercase',
   },
   colon: {
     fontFamily: 'var(--font-display)',
-    fontSize: '1.4rem',
-    fontWeight: 700,
-    color: 'rgba(255, 255, 255, 0.2)',
-    marginBottom: '14px',
+    fontSize: '1.3rem',
+    fontWeight: 800,
+    color: '#ff0033',
+    marginBottom: '12px',
   },
-  bottomMeta: {
+  metaRow: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     gap: '8px',
     flexWrap: 'wrap',
-    fontSize: '0.84rem',
+    fontSize: '0.8rem',
     color: '#a1a1aa',
     borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-    paddingTop: '14px',
+    paddingTop: '12px',
   },
-  metaItem: {
+  metaCol: {
     display: 'inline-flex',
     alignItems: 'center',
-    gap: '6px',
-    fontWeight: 600,
+    gap: '5px',
+    fontWeight: 700,
     color: '#ffffff',
-  },
-  dot: {
-    color: 'rgba(255, 255, 255, 0.2)',
   },
 };

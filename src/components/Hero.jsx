@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, MapPin, ArrowRight, Copy, Check, Sparkles } from 'lucide-react';
+import { Calendar, MapPin, ArrowRight, Copy, Check, Flame } from 'lucide-react';
 import Countdown from './Countdown';
 
 const InstagramIcon = ({ size = 16, color = '#ffffff' }) => (
@@ -27,85 +27,88 @@ export default function Hero() {
   return (
     <section id="about" style={styles.section}>
       <div className="container" style={styles.container}>
-        {/* Marketable Badge */}
-        <div style={styles.badgeRow}>
-          <div style={styles.pill}>
-            <span style={styles.pulseDot} />
-            <span>UBIT HISTORIC FIRST • CAREER CONNECT '26</span>
-          </div>
-          <div style={styles.ventureTag}>
-            WITH <strong>VENTURE GAMES</strong>
+        {/* Most Important Top Headline: SPONSORED BY VENTURE GAMES */}
+        <div style={styles.topSponsorHeadline}>
+          <div style={styles.sponsorBadge}>
+            <Flame size={15} color="#ff0033" />
+            <span>OFFICIALLY SPONSORED BY</span>
+            <strong style={styles.sponsorName}>VENTURE GAMES</strong>
           </div>
         </div>
 
-        {/* Emblem */}
-        <div style={styles.emblemBox}>
+        {/* Center Emblem Visual */}
+        <div style={styles.emblemContainer}>
+          <div style={styles.emblemBackGlow} />
           <img
             src="/logos/onyx-evo-emblem.jpg"
-            alt="Onyx Evo 2026 Emblem"
-            style={styles.emblem}
+            alt="Onyx Evo 2026 Official Logo"
+            style={styles.emblemImg}
           />
         </div>
 
-        {/* Punchy Marketable Headline */}
-        <h1 style={styles.title}>
-          ONYX EVO <span style={{ color: '#ff1e42' }}>2026</span>
+        {/* Main Title */}
+        <h1 style={styles.mainTitle}>
+          ONYX EVO <span style={{ color: '#ff0033', textShadow: '0 0 30px #ff0033' }}>2026</span>
         </h1>
 
-        {/* Condensed Subtitle (Cut 60% text!) */}
-        <p style={styles.lead}>
-          First-ever professional esports competition in UBIT history. 
-          Advised by <strong>Dr. Syed Mohammad Khalid Jamal</strong> & <strong>Dr. Humera Azam</strong>.
+        {/* High-Impact Tagline */}
+        <p style={styles.tagline}>
+          First Ever Professional Esports Competition in UBIT History. 
+          Module for <strong>Career Connect '26</strong> under student advisors 
+          <span style={{ color: '#ffffff', fontWeight: 700 }}> Dr. Syed Mohammad Khalid Jamal</span> & 
+          <span style={{ color: '#ffffff', fontWeight: 700 }}> Dr. Humera Azam</span>.
         </p>
 
-        {/* Key Event Badges */}
-        <div style={styles.eventPills}>
-          <span style={styles.eventPill}>
-            <Calendar size={14} color="#ff1e42" /> <strong>22 Oct 2026</strong> (10AM – 4PM)
-          </span>
-          <span style={styles.eventPill}>
-            <MapPin size={14} color="#ff1e42" /> <strong>UBIT Department, KU</strong>
-          </span>
+        {/* Event Quick Badges */}
+        <div style={styles.eventBadges}>
+          <div style={styles.badgeItem}>
+            <Calendar size={14} color="#ff0033" />
+            <span>Date: <strong>22 Oct 2026</strong> (10 AM – 4 PM)</span>
+          </div>
+          <div style={styles.badgeItem}>
+            <MapPin size={14} color="#ff0033" />
+            <span>Venue: <strong>UBIT Department, KU</strong></span>
+          </div>
         </div>
 
-        {/* Prominent High-Priority Countdown */}
-        <div style={styles.countdownBox}>
+        {/* High-Priority Countdown to Oct 21 */}
+        <div style={styles.countdownWrapper}>
           <Countdown />
         </div>
 
-        {/* Condensed, Interactive Payment Info Card */}
-        <div className="minimal-card" style={styles.payCard}>
-          <div style={styles.payContent}>
-            <div>
-              <div style={styles.payTag}>REGISTRATION FEE • ONLY JAZZCASH</div>
+        {/* Direct Payment Notice Card */}
+        <div className="rough-card" style={styles.payCard}>
+          <div style={styles.payFlex}>
+            <div style={styles.payInfo}>
+              <div style={styles.payLabel}>REGISTRATION PAYMENT • ONLY JAZZCASH</div>
               <div style={styles.payTitle}>
-                Hasnain Ahmed — <span style={{ color: '#ff1e42' }}>03156051408</span>
+                Hasnain Ahmed — <span style={{ color: '#ff0033', fontWeight: 900 }}>03156051408</span>
               </div>
-              <div style={styles.paySub}>Transfer before 21 Oct & DM receipt to @onyxevo2026</div>
+              <div style={styles.paySub}>Pay fee before 21 Oct & DM proof to @onyxevo2026</div>
             </div>
             <button
               onClick={copyNumber}
               style={{
                 ...styles.copyBtn,
-                background: copied ? '#10b981' : 'rgba(255, 30, 66, 0.15)',
-                borderColor: copied ? '#10b981' : 'rgba(255, 30, 66, 0.35)',
+                background: copied ? '#b3001e' : 'rgba(255, 0, 51, 0.15)',
+                borderColor: copied ? '#ff0033' : 'rgba(255, 0, 51, 0.4)',
               }}
               title="Copy JazzCash Number"
             >
-              {copied ? <Check size={14} color="#fff" /> : <Copy size={14} color="#ff1e42" />}
-              <span>{copied ? 'Copied' : 'Copy'}</span>
+              {copied ? <Check size={14} color="#fff" /> : <Copy size={14} color="#ff0033" />}
+              <span>{copied ? 'Copied' : 'Copy Number'}</span>
             </button>
           </div>
         </div>
 
-        {/* Clear Action CTAs */}
+        {/* Action Buttons */}
         <div style={styles.btnRow}>
           <a
             href="https://instagram.com/onyxevo2026/"
             target="_blank"
             rel="noreferrer"
-            className="btn btn-crimson"
-            style={styles.actionBtn}
+            className="cyber-btn cyber-btn-red"
+            style={styles.heroBtn}
           >
             <InstagramIcon size={16} />
             <span>Register on Instagram</span>
@@ -113,11 +116,11 @@ export default function Hero() {
           </a>
 
           <button
-            className="btn btn-outline"
-            style={styles.actionBtn}
+            className="cyber-btn cyber-btn-dark"
+            style={styles.heroBtn}
             onClick={() => scrollTo('games')}
           >
-            <span>View FC 27 & TEKKEN 8</span>
+            <span>Explore The Games</span>
           </button>
         </div>
       </div>
@@ -127,8 +130,8 @@ export default function Hero() {
 
 const styles = {
   section: {
-    paddingTop: '115px',
-    paddingBottom: '70px',
+    paddingTop: '110px',
+    paddingBottom: '60px',
     position: 'relative',
   },
   container: {
@@ -137,121 +140,127 @@ const styles = {
     alignItems: 'center',
     textAlign: 'center',
   },
-  badgeRow: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '8px',
-    flexWrap: 'wrap',
+  topSponsorHeadline: {
     marginBottom: '20px',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
   },
-  pill: {
+  sponsorBadge: {
     display: 'inline-flex',
     alignItems: 'center',
     gap: '8px',
-    fontSize: '0.74rem',
-    fontWeight: 700,
+    fontFamily: 'var(--font-display)',
+    fontSize: 'clamp(0.75rem, 2.5vw, 0.9rem)',
+    fontWeight: 800,
+    letterSpacing: '0.08em',
+    color: '#ff0033',
+    background: 'rgba(255, 0, 51, 0.12)',
+    border: '1px solid rgba(255, 0, 51, 0.45)',
+    padding: '8px 18px',
+    borderRadius: '4px',
+    boxShadow: '0 0 20px rgba(255, 0, 51, 0.25)',
+  },
+  sponsorName: {
+    color: '#ffffff',
     letterSpacing: '0.06em',
-    color: '#ff1e42',
-    background: 'rgba(255, 30, 66, 0.08)',
-    border: '1px solid rgba(255, 30, 66, 0.25)',
-    padding: '5px 12px',
-    borderRadius: '999px',
   },
-  pulseDot: {
-    width: '6px',
-    height: '6px',
-    borderRadius: '50%',
-    backgroundColor: '#ff1e42',
-    boxShadow: '0 0 8px #ff1e42',
-  },
-  ventureTag: {
-    fontSize: '0.74rem',
-    color: '#a1a1aa',
-    background: 'rgba(255, 255, 255, 0.04)',
-    border: '1px solid rgba(255, 255, 255, 0.08)',
-    padding: '5px 12px',
-    borderRadius: '999px',
-  },
-  emblemBox: {
+  emblemContainer: {
+    position: 'relative',
     marginBottom: '16px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  emblem: {
+  emblemBackGlow: {
+    position: 'absolute',
+    width: '150px',
+    height: '150px',
+    borderRadius: '50%',
+    background: 'radial-gradient(circle, rgba(255, 0, 51, 0.45) 0%, transparent 70%)',
+    pointerEvents: 'none',
+  },
+  emblemImg: {
     width: '120px',
     height: '120px',
     objectFit: 'contain',
     borderRadius: '16px',
-    boxShadow: '0 0 35px rgba(255, 30, 66, 0.35)',
+    boxShadow: '0 0 40px rgba(255, 0, 51, 0.6)',
+    position: 'relative',
+    zIndex: 2,
   },
-  title: {
+  mainTitle: {
     fontFamily: 'var(--font-display)',
-    fontSize: 'clamp(2.4rem, 6vw, 4.2rem)',
-    fontWeight: 800,
-    letterSpacing: '-0.03em',
+    fontSize: 'clamp(2.4rem, 6.5vw, 4.4rem)',
+    fontWeight: 900,
+    letterSpacing: '-0.02em',
     color: '#ffffff',
-    lineHeight: 1.1,
+    lineHeight: 1.08,
     marginBottom: '12px',
   },
-  lead: {
-    fontSize: 'clamp(0.95rem, 2vw, 1.1rem)',
+  tagline: {
+    fontSize: 'clamp(0.92rem, 2vw, 1.05rem)',
     color: '#a1a1aa',
-    maxWidth: '580px',
+    maxWidth: '620px',
     lineHeight: 1.55,
     marginBottom: '18px',
   },
-  eventPills: {
+  eventBadges: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: '10px',
+    gap: '8px',
     flexWrap: 'wrap',
-    marginBottom: '26px',
+    marginBottom: '24px',
   },
-  eventPill: {
+  badgeItem: {
     display: 'inline-flex',
     alignItems: 'center',
     gap: '6px',
-    fontSize: '0.84rem',
-    color: '#f4f4f5',
-    background: 'rgba(255, 255, 255, 0.03)',
+    fontSize: '0.82rem',
+    color: '#d4d4d8',
+    background: '#0a0a0f',
     border: '1px solid rgba(255, 255, 255, 0.08)',
     padding: '6px 14px',
-    borderRadius: '8px',
+    borderRadius: '4px',
   },
-  countdownBox: {
+  countdownWrapper: {
     width: '100%',
-    marginBottom: '24px',
+    marginBottom: '22px',
   },
   payCard: {
-    maxWidth: '680px',
+    maxWidth: '640px',
     width: '100%',
-    padding: '16px 20px',
-    marginBottom: '26px',
-    background: 'rgba(255, 30, 66, 0.04)',
-    border: '1px solid rgba(255, 30, 66, 0.22)',
+    padding: '16px 18px',
+    marginBottom: '24px',
+    textAlign: 'left',
   },
-  payContent: {
+  payFlex: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
     flexWrap: 'wrap',
     gap: '12px',
-    textAlign: 'left',
   },
-  payTag: {
+  payInfo: {
+    flex: '1',
+    minWidth: '220px',
+  },
+  payLabel: {
+    fontFamily: 'var(--font-display)',
     fontSize: '0.68rem',
     fontWeight: 800,
     letterSpacing: '0.08em',
-    color: '#ff1e42',
+    color: '#ff0033',
     marginBottom: '2px',
   },
   payTitle: {
-    fontSize: '0.98rem',
-    fontWeight: 700,
+    fontSize: '0.96rem',
+    fontWeight: 800,
     color: '#ffffff',
   },
   paySub: {
-    fontSize: '0.82rem',
+    fontSize: '0.8rem',
     color: '#a1a1aa',
     marginTop: '2px',
   },
@@ -260,10 +269,11 @@ const styles = {
     alignItems: 'center',
     gap: '6px',
     border: '1px solid',
-    borderRadius: '6px',
+    borderRadius: '4px',
     padding: '8px 14px',
-    fontSize: '0.82rem',
-    fontWeight: 700,
+    fontSize: '0.8rem',
+    fontFamily: 'var(--font-display)',
+    fontWeight: 800,
     color: '#ffffff',
     cursor: 'pointer',
     transition: 'all 0.2s',
@@ -275,8 +285,8 @@ const styles = {
     gap: '12px',
     flexWrap: 'wrap',
   },
-  actionBtn: {
+  heroBtn: {
     padding: '12px 24px',
-    fontSize: '0.92rem',
+    fontSize: '0.88rem',
   },
 };

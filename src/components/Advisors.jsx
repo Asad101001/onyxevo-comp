@@ -1,5 +1,5 @@
 import React from 'react';
-import { GraduationCap } from 'lucide-react';
+import { Shield } from 'lucide-react';
 
 const ADVISORS = [
   {
@@ -21,19 +21,19 @@ export default function Advisors() {
     <section id="advisors" style={styles.section}>
       <div className="container">
         <div style={styles.header}>
-          <div className="section-tag">LEADERSHIP</div>
-          <h2 className="section-title">STUDENT ADVISORS</h2>
+          <div className="section-tag">GUIDANCE & PATRONAGE</div>
+          <h2 className="section-title">OUR STUDENT ADVISORS</h2>
           <p className="section-desc">
-            Organized under the guidance of our distinguished faculty advisors at UBIT.
+            Organized as a signature module of Career Connect '26 under our esteemed student advisors at UBIT.
           </p>
         </div>
 
         <div style={styles.grid}>
           {ADVISORS.map((advisor, index) => (
-            <div key={index} className="minimal-card" style={styles.card}>
+            <div key={index} className="rough-card" style={styles.card}>
               <div style={styles.topRow}>
                 <span style={styles.tag}>FACULTY ADVISOR</span>
-                <GraduationCap size={16} color="#71717a" />
+                <Shield size={16} color="#ff0033" />
               </div>
 
               <h3 style={styles.name}>{advisor.name}</h3>
@@ -50,11 +50,11 @@ export default function Advisors() {
 
 const styles = {
   section: {
-    padding: '70px 0',
+    padding: '60px 0',
   },
   header: {
     textAlign: 'center',
-    marginBottom: '36px',
+    marginBottom: '28px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -62,12 +62,12 @@ const styles = {
   grid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-    gap: '16px',
-    maxWidth: '800px',
+    gap: '14px',
+    maxWidth: '780px',
     margin: '0 auto',
   },
   card: {
-    padding: '24px 22px',
+    padding: '20px 18px',
     display: 'flex',
     flexDirection: 'column',
   },
@@ -75,39 +75,39 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: '12px',
+    marginBottom: '10px',
   },
   tag: {
-    fontSize: '0.68rem',
-    fontWeight: 700,
-    letterSpacing: '0.06em',
-    color: '#ff1e42',
-    background: 'rgba(255, 30, 66, 0.08)',
-    border: '1px solid rgba(255, 30, 66, 0.25)',
-    padding: '3px 8px',
-    borderRadius: '4px',
+    fontFamily: 'var(--font-display)',
+    fontSize: '0.66rem',
+    fontWeight: 800,
+    letterSpacing: '0.08em',
+    color: '#ff0033',
+    background: 'rgba(255, 0, 51, 0.1)',
+    border: '1px solid rgba(255, 0, 51, 0.3)',
+    padding: '2px 8px',
+    borderRadius: '2px',
   },
   name: {
     fontFamily: 'var(--font-display)',
-    fontSize: '1.2rem',
+    fontSize: '1.15rem',
     fontWeight: 800,
     color: '#ffffff',
     letterSpacing: '-0.01em',
-    lineHeight: 1.25,
-    marginBottom: '4px',
+    marginBottom: '2px',
   },
   role: {
-    fontSize: '0.86rem',
-    fontWeight: 600,
-    color: '#ff1e42',
+    fontSize: '0.84rem',
+    fontWeight: 700,
+    color: '#ff0033',
   },
   dept: {
-    fontSize: '0.82rem',
-    color: '#cbd5e1',
+    fontSize: '0.8rem',
+    color: '#d4d4d8',
     marginTop: '2px',
   },
   inst: {
-    fontSize: '0.78rem',
+    fontSize: '0.75rem',
     color: '#71717a',
   },
 };

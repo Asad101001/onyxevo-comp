@@ -1,71 +1,52 @@
 import React from 'react';
-import { Sparkles, Building2, CheckCircle2 } from 'lucide-react';
+import { Flame, CheckCircle2 } from 'lucide-react';
 
 export default function Collaboration() {
   return (
-    <section id="collaboration" style={styles.section}>
+    <section id="sponsor" style={styles.section}>
       <div className="container">
         <div style={styles.header}>
-          <div className="section-tag">STRATEGIC ALLIANCE</div>
-          <h2 className="section-title">VENTURE GAMES COLLABORATION</h2>
+          <div className="section-tag">OFFICIAL TITLE SPONSOR</div>
+          <h2 style={styles.title}>
+            SPONSORED BY <span style={{ color: '#ff0033' }}>VENTURE GAMES</span>
+          </h2>
           <p className="section-desc">
-            Bringing certified PlayStation 5 tournament stations and pro-tier competitive standards to UBIT.
+            Venture Games is the primary title sponsor powering Onyx Evo 2026 with pro-grade esports equipment and competitive management.
           </p>
         </div>
 
-        <div style={styles.grid}>
-          {/* Main Venture Games Card */}
-          <div className="minimal-card" style={styles.mainCard}>
-            <div style={styles.flexRow}>
-              <div style={styles.logoWrap}>
-                <img
-                  src="/images/venture-games-logo.jpg"
-                  alt="Venture Games"
-                  style={styles.logoImg}
-                />
-              </div>
+        <div className="rough-card" style={styles.sponsorCard}>
+          <div style={styles.flexWrapper}>
+            <div style={styles.logoWrap}>
+              <img
+                src="/images/venture-games-logo.jpg"
+                alt="Venture Games Title Sponsor"
+                style={styles.logoImg}
+              />
+            </div>
 
-              <div style={styles.details}>
-                <div style={styles.tag}>OFFICIAL ESPORTS COLLABORATOR</div>
-                <h3 style={styles.name}>VENTURE GAMES</h3>
-                <div style={styles.perks}>
-                  <div style={styles.perk}>
-                    <CheckCircle2 size={14} color="#ff1e42" />
-                    <span>Official PS5 Tournament Stations</span>
-                  </div>
-                  <div style={styles.perk}>
-                    <CheckCircle2 size={14} color="#ff1e42" />
-                    <span>Certified Controllers & High-Refresh Displays</span>
-                  </div>
-                  <div style={styles.perk}>
-                    <CheckCircle2 size={14} color="#ff1e42" />
-                    <span>Standardized Competitive Fair Play Rules</span>
-                  </div>
+            <div style={styles.details}>
+              <div style={styles.badge}>PRIMARY EVENT SPONSOR</div>
+              <h3 style={styles.sponsorTitle}>VENTURE GAMES</h3>
+              <p style={styles.sponsorText}>
+                Providing official tournament PlayStation 5 setups, calibrated DualSense gear, and competitive fair-play standards for UBIT's first historic esports championship.
+              </p>
+
+              <div style={styles.perks}>
+                <div style={styles.perk}>
+                  <CheckCircle2 size={14} color="#ff0033" />
+                  <span>Official Tournament Hardware Sponsor</span>
+                </div>
+                <div style={styles.perk}>
+                  <CheckCircle2 size={14} color="#ff0033" />
+                  <span>DualSense & Display Stations</span>
+                </div>
+                <div style={styles.perk}>
+                  <CheckCircle2 size={14} color="#ff0033" />
+                  <span>Certified Esports Management</span>
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Sub Card: Career Connect */}
-          <div className="minimal-card" style={styles.subCard}>
-            <div style={styles.subHeader}>
-              <Sparkles size={16} color="#ff1e42" />
-              <h4 style={styles.subTitle}>CAREER CONNECT '26</h4>
-            </div>
-            <p style={styles.subText}>
-              UBIT's flagship module connecting student innovation and esports.
-            </p>
-          </div>
-
-          {/* Sub Card: DCS - UBIT */}
-          <div className="minimal-card" style={styles.subCard}>
-            <div style={styles.subHeader}>
-              <Building2 size={16} color="#ff1e42" />
-              <h4 style={styles.subTitle}>DCS - UBIT</h4>
-            </div>
-            <p style={styles.subText}>
-              Department of Computer Science, University of Karachi — Host campus.
-            </p>
           </div>
         </div>
       </div>
@@ -75,25 +56,29 @@ export default function Collaboration() {
 
 const styles = {
   section: {
-    padding: '70px 0',
+    padding: '60px 0',
   },
   header: {
     textAlign: 'center',
-    marginBottom: '36px',
+    marginBottom: '28px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(12, 1fr)',
-    gap: '16px',
+  title: {
+    fontFamily: 'var(--font-display)',
+    fontSize: 'clamp(1.8rem, 4.5vw, 2.6rem)',
+    fontWeight: 900,
+    letterSpacing: '-0.02em',
+    color: '#ffffff',
+    textTransform: 'uppercase',
+    marginBottom: '8px',
   },
-  mainCard: {
-    gridColumn: 'span 12',
+  sponsorCard: {
     padding: '24px',
+    borderLeft: '4px solid #ff0033',
   },
-  flexRow: {
+  flexWrapper: {
     display: 'flex',
     alignItems: 'center',
     gap: '20px',
@@ -102,9 +87,10 @@ const styles = {
   logoWrap: {
     width: '90px',
     height: '90px',
-    borderRadius: '12px',
+    borderRadius: '10px',
     overflow: 'hidden',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
+    border: '1px solid rgba(255, 0, 51, 0.4)',
+    boxShadow: '0 0 20px rgba(255, 0, 51, 0.3)',
     flexShrink: 0,
   },
   logoImg: {
@@ -116,20 +102,27 @@ const styles = {
     flex: '1',
     minWidth: '240px',
   },
-  tag: {
+  badge: {
+    fontFamily: 'var(--font-display)',
     fontSize: '0.68rem',
-    fontWeight: 700,
+    fontWeight: 800,
     letterSpacing: '0.08em',
-    color: '#ff1e42',
+    color: '#ff0033',
     marginBottom: '4px',
   },
-  name: {
+  sponsorTitle: {
     fontFamily: 'var(--font-display)',
     fontSize: '1.4rem',
-    fontWeight: 800,
+    fontWeight: 900,
     color: '#ffffff',
-    letterSpacing: '-0.02em',
-    marginBottom: '10px',
+    letterSpacing: '-0.01em',
+    marginBottom: '6px',
+  },
+  sponsorText: {
+    fontSize: '0.86rem',
+    color: '#a1a1aa',
+    lineHeight: 1.5,
+    marginBottom: '14px',
   },
   perks: {
     display: 'flex',
@@ -140,31 +133,8 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '6px',
-    fontSize: '0.84rem',
-    color: '#e4e4e7',
-  },
-  subCard: {
-    gridColumn: 'span 6',
-    padding: '20px',
-    '@media (max-width: 768px)': {
-      gridColumn: 'span 12',
-    },
-  },
-  subHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    marginBottom: '6px',
-  },
-  subTitle: {
-    fontFamily: 'var(--font-display)',
-    fontSize: '1rem',
-    fontWeight: 700,
-    color: '#ffffff',
-  },
-  subText: {
-    fontSize: '0.84rem',
-    color: '#a1a1aa',
-    lineHeight: 1.5,
+    fontSize: '0.82rem',
+    color: '#f4f4f5',
+    fontWeight: 600,
   },
 };
