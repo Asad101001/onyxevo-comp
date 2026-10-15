@@ -20,7 +20,7 @@ export default function Footer() {
           {/* Brand Info */}
           <div style={styles.brandCol}>
             <div style={styles.brandTitleRow}>
-              <img src="/logos/onyx-evo-emblem.jpg" alt="Onyx Evo" style={styles.logo} />
+              <img src="/logos/venture-games-icon.png" alt="Venture Games" style={styles.logo} />
               <div>
                 <strong style={styles.brandName}>ONYX EVO 2026</strong>
                 <div style={styles.brandSub}>UBIT ESPORTS ARENA • CAREER CONNECT '26</div>
@@ -32,13 +32,8 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Registration Info & Social */}
+          {/* Social Link */}
           <div style={styles.actionCol}>
-            <div style={styles.payBox}>
-              <span style={styles.payLabel}>REGISTRATION CONTACT</span>
-              <strong style={styles.payVal}>Hasnain Ahmed • 03156051408 (Only JazzCash)</strong>
-            </div>
-
             <a
               href="https://instagram.com/onyxevo2026/"
               target="_blank"
@@ -92,11 +87,11 @@ const styles = {
     gap: '10px',
   },
   logo: {
-    width: '36px',
-    height: '36px',
-    borderRadius: '6px',
+    width: '40px',
+    height: '40px',
+    borderRadius: '8px',
     objectFit: 'cover',
-    border: '1px solid #ff0033',
+    boxShadow: '0 0 10px rgba(255, 180, 0, 0.3)',
   },
   brandName: {
     fontFamily: 'var(--font-display)',
@@ -121,24 +116,6 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     gap: '10px',
-  },
-  payBox: {
-    background: '#07070a',
-    border: '1px solid rgba(255, 0, 51, 0.3)',
-    borderRadius: '4px',
-    padding: '8px 12px',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  payLabel: {
-    fontSize: '0.66rem',
-    fontWeight: 800,
-    color: '#ff0033',
-    letterSpacing: '0.06em',
-  },
-  payVal: {
-    fontSize: '0.82rem',
-    color: '#ffffff',
   },
   igBtn: {
     padding: '10px 18px',

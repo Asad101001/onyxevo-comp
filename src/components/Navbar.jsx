@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight, Flame } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Flame, Lock } from 'lucide-react';
 
 const InstagramIcon = ({ size = 15, color = '#ffffff' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -31,8 +31,8 @@ export default function Navbar() {
       backgroundColor: scrolled ? 'rgba(5, 5, 7, 0.96)' : 'rgba(5, 5, 7, 0.85)',
       boxShadow: scrolled ? '0 10px 30px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 0, 51, 0.3)' : '0 1px 0 rgba(255, 255, 255, 0.06)',
     }}>
-      {/* Topmost Official Sponsor Headline Banner */}
-      <div style={styles.topSponsorBar}>
+      {/* Topmost Official Sponsor Headline Banner — hidden on mobile */}
+      <div style={styles.topSponsorBar} className="sponsor-bar-desktop">
         <div className="container" style={styles.topSponsorInner}>
           <div style={styles.sponsorNotice}>
             <Flame size={13} color="#ff0033" />
@@ -75,7 +75,7 @@ export default function Navbar() {
             href="https://instagram.com/onyxevo2026/"
             target="_blank"
             rel="noreferrer"
-            className="cyber-btn cyber-btn-red"
+            className="cyber-btn cyber-btn-red nav-ig-btn"
             style={styles.igBtn}
           >
             <InstagramIcon size={14} />
@@ -102,16 +102,10 @@ export default function Navbar() {
           <button style={styles.mLink} onClick={() => scrollTo('schedule')}>// Tournament Schedule</button>
           <button style={styles.mLink} onClick={() => scrollTo('advisors')}>// Student Advisors</button>
           <button style={styles.mLink} onClick={() => scrollTo('sponsor')}>// Venture Games Sponsorship</button>
-          <a
-            href="https://instagram.com/onyxevo2026/"
-            target="_blank"
-            rel="noreferrer"
-            className="cyber-btn cyber-btn-red"
-            style={{ width: '100%', marginTop: '10px' }}
-          >
-            <InstagramIcon size={15} />
-            <span>Register on Instagram</span>
-          </a>
+          <div style={styles.lockedDrawerBtn}>
+            <Lock size={13} color="#ff0033" />
+            <span style={styles.lockedDrawerLabel}>REGISTRATION LOCKED</span>
+          </div>
         </div>
       )}
     </header>
@@ -244,5 +238,26 @@ const styles = {
     fontWeight: 700,
     textAlign: 'left',
     cursor: 'pointer',
+  },
+  lockedDrawerBtn: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px',
+    width: '100%',
+    marginTop: '10px',
+    padding: '11px 16px',
+    background: 'rgba(255, 0, 51, 0.06)',
+    border: '1px solid rgba(255, 0, 51, 0.4)',
+    borderRadius: '4px',
+    cursor: 'not-allowed',
+    animation: 'lockPulse 2s ease-in-out infinite',
+  },
+  lockedDrawerLabel: {
+    fontFamily: 'var(--font-display)',
+    fontSize: '0.78rem',
+    fontWeight: 800,
+    letterSpacing: '0.1em',
+    color: '#ff0033',
   },
 };

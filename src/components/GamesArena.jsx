@@ -6,9 +6,9 @@ export default function GamesArena() {
 
   const games = {
     fc27: {
-      name: 'EA SPORTS FC 27 (FIFA)',
+      name: 'EA SPORTS FC 26 (FIFA)',
       badge: '1v1 VIRTUAL FOOTBALL',
-      banner: '/images/fc27-banner.jpg',
+      banner: '/images/fc26-banner.png',
       headline: 'Next-Gen Competitive Football on PlayStation 5',
       summary: 'Tactical gameplay, 95-rated squads, and live arena match broadcasting powered by Venture Games.',
       specs: [
@@ -55,7 +55,7 @@ export default function GamesArena() {
               onClick={() => setActiveTab('fc27')}
             >
               <Gamepad2 size={16} />
-              <span>FC 27 (FIFA)</span>
+              <span>FC 26 (FIFA)</span>
             </button>
             <button
               style={{

@@ -1,6 +1,30 @@
-import React, { useState } from 'react';
-import { Calendar, MapPin, ArrowRight, Copy, Check, Flame } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Calendar, MapPin, ArrowRight, Flame, Lock } from 'lucide-react';
 import Countdown from './Countdown';
+
+// Registration unlocks: 17 Oct 2026, 12:00 PM PKT (UTC+5)
+const UNLOCK_TIME = new Date('2026-10-17T07:00:00Z').getTime();
+
+function useRegistrationLock() {
+  const [timeLeft, setTimeLeft] = useState(() => Math.max(0, UNLOCK_TIME - Date.now()));
+
+  useEffect(() => {
+    if (timeLeft === 0) return;
+    const id = setInterval(() => {
+      const remaining = Math.max(0, UNLOCK_TIME - Date.now());
+      setTimeLeft(remaining);
+      if (remaining === 0) clearInterval(id);
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const locked = timeLeft > 0;
+  const hrs  = String(Math.floor(timeLeft / 3600000)).padStart(2, '0');
+  const mins = String(Math.floor((timeLeft % 3600000) / 60000)).padStart(2, '0');
+  const secs = String(Math.floor((timeLeft % 60000) / 1000)).padStart(2, '0');
+
+  return { locked, display: `${hrs}:${mins}:${secs}` };
+}
 
 const InstagramIcon = ({ size = 16, color = '#ffffff' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -11,13 +35,7 @@ const InstagramIcon = ({ size = 16, color = '#ffffff' }) => (
 );
 
 export default function Hero() {
-  const [copied, setCopied] = useState(false);
-
-  const copyNumber = () => {
-    navigator.clipboard.writeText('03156051408');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  const { locked, display } = useRegistrationLock();
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);
@@ -32,7 +50,11 @@ export default function Hero() {
           <div style={styles.sponsorBadge}>
             <Flame size={15} color="#ff0033" />
             <span>OFFICIALLY SPONSORED BY</span>
-            <strong style={styles.sponsorName}>VENTURE GAMES</strong>
+            <img
+              src="/logos/venture-games-logo.png"
+              alt="Venture Games"
+              style={styles.vgLogo}
+            />
           </div>
         </div>
 
@@ -76,45 +98,39 @@ export default function Hero() {
           <Countdown />
         </div>
 
-        {/* Direct Payment Notice Card */}
-        <div className="rough-card" style={styles.payCard}>
-          <div style={styles.payFlex}>
-            <div style={styles.payInfo}>
-              <div style={styles.payLabel}>REGISTRATION PAYMENT • ONLY JAZZCASH</div>
-              <div style={styles.payTitle}>
-                Hasnain Ahmed — <span style={{ color: '#ff0033', fontWeight: 900 }}>03156051408</span>
+        {/* Action + Deadline column */}
+        <div style={styles.ctaColumn}>
+          {/* Lock / Register button */}
+          <div style={styles.btnRow}>
+            {locked ? (
+              <div style={styles.lockBtn}>
+                <Lock size={14} color="#ff0033" style={{ flexShrink: 0 }} />
+                <div style={styles.lockInner}>
+                  <span style={styles.lockLabel}>LOCKED TILL 17 OCT 12PM</span>
+                  <span style={styles.lockTimer}>{display}</span>
+                </div>
               </div>
-              <div style={styles.paySub}>Pay fee before 21 Oct & DM proof to @onyxevo2026</div>
-            </div>
-            <button
-              onClick={copyNumber}
-              style={{
-                ...styles.copyBtn,
-                background: copied ? '#b3001e' : 'rgba(255, 0, 51, 0.15)',
-                borderColor: copied ? '#ff0033' : 'rgba(255, 0, 51, 0.4)',
-              }}
-              title="Copy JazzCash Number"
-            >
-              {copied ? <Check size={14} color="#fff" /> : <Copy size={14} color="#ff0033" />}
-              <span>{copied ? 'Copied' : 'Copy Number'}</span>
-            </button>
+            ) : (
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdXWDb1yfxX_NwxSQ-W2snTo_0gMsmzEozjxme5luSoR4OGwA/viewform?usp=preview"
+                target="_blank"
+                rel="noreferrer"
+                className="cyber-btn cyber-btn-red"
+                style={styles.heroBtn}
+              >
+                <span>Register</span>
+                <ArrowRight size={15} />
+              </a>
+            )}
           </div>
-        </div>
 
-        {/* Action Buttons */}
-        <div style={styles.btnRow}>
-          <a
-            href="https://instagram.com/onyxevo2026/"
-            target="_blank"
-            rel="noreferrer"
-            className="cyber-btn cyber-btn-red"
-            style={styles.heroBtn}
-          >
-            <InstagramIcon size={16} />
-            <span>Register on Instagram</span>
-            <ArrowRight size={15} />
-          </a>
+          {/* Registration Deadline Notice */}
+          <div style={styles.deadlineNotice}>
+            <Calendar size={13} color="#ff0033" />
+            <span>Registration Deadline: <strong style={{ color: '#ff0033' }}>21 Oct 2026</strong> — DM proof to <strong>@onyxevo2026</strong></span>
+          </div>
 
+          {/* Explore Games */}
           <button
             className="cyber-btn cyber-btn-dark"
             style={styles.heroBtn}
@@ -225,58 +241,34 @@ const styles = {
     borderRadius: '4px',
   },
   countdownWrapper: {
+    display: 'none',
     width: '100%',
     marginBottom: '22px',
   },
-  payCard: {
-    maxWidth: '640px',
-    width: '100%',
-    padding: '16px 18px',
-    marginBottom: '24px',
-    textAlign: 'left',
+  vgLogo: {
+    height: '22px',
+    objectFit: 'contain',
+    filter: 'brightness(0) invert(1)',
+    opacity: 0.9,
+    marginLeft: '2px',
   },
-  payFlex: {
-    display: 'flex',
+  deadlineNotice: {
+    display: 'none',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-    gap: '12px',
-  },
-  payInfo: {
-    flex: '1',
-    minWidth: '220px',
-  },
-  payLabel: {
-    fontFamily: 'var(--font-display)',
-    fontSize: '0.68rem',
-    fontWeight: 800,
-    letterSpacing: '0.08em',
-    color: '#ff0033',
-    marginBottom: '2px',
-  },
-  payTitle: {
-    fontSize: '0.96rem',
-    fontWeight: 800,
-    color: '#ffffff',
-  },
-  paySub: {
-    fontSize: '0.8rem',
+    gap: '7px',
+    fontSize: '0.82rem',
     color: '#a1a1aa',
-    marginTop: '2px',
-  },
-  copyBtn: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '6px',
-    border: '1px solid',
+    background: 'rgba(255, 0, 51, 0.07)',
+    border: '1px solid rgba(255, 0, 51, 0.25)',
     borderRadius: '4px',
-    padding: '8px 14px',
-    fontSize: '0.8rem',
-    fontFamily: 'var(--font-display)',
-    fontWeight: 800,
-    color: '#ffffff',
-    cursor: 'pointer',
-    transition: 'all 0.2s',
+    padding: '7px 14px',
+  },
+  ctaColumn: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '12px',
+    width: '100%',
   },
   btnRow: {
     display: 'flex',
@@ -288,5 +280,38 @@ const styles = {
   heroBtn: {
     padding: '12px 24px',
     fontSize: '0.88rem',
+  },
+  lockBtn: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '10px',
+    padding: '11px 22px',
+    background: 'rgba(255, 0, 51, 0.06)',
+    border: '1px solid rgba(255, 0, 51, 0.45)',
+    borderRadius: '4px',
+    cursor: 'not-allowed',
+    animation: 'lockPulse 2s ease-in-out infinite',
+    clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)',
+  },
+  lockInner: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    gap: '1px',
+  },
+  lockLabel: {
+    fontFamily: 'var(--font-display)',
+    fontSize: '0.62rem',
+    fontWeight: 800,
+    letterSpacing: '0.1em',
+    color: '#ff0033',
+  },
+  lockTimer: {
+    fontFamily: 'var(--font-display)',
+    fontSize: '1.1rem',
+    fontWeight: 900,
+    letterSpacing: '0.06em',
+    color: '#ffffff',
+    lineHeight: 1,
   },
 };

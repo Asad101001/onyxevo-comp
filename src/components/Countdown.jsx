@@ -35,10 +35,6 @@ export default function Countdown() {
     <div style={styles.card}>
       {/* Top Warning Banner */}
       <div style={styles.topBanner}>
-        <div style={styles.warningBadge}>
-          <AlertTriangle size={13} color="#ff0033" />
-          <span>REGISTRATION DEADLINE: 21 OCT</span>
-        </div>
         <div style={styles.eventBadge}>
           <Calendar size={13} color="#ffffff" />
           <span>EVENT: 22 OCT (10AM – 4PM)</span>

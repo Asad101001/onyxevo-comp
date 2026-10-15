@@ -235,6 +235,17 @@ body {
   to { transform: rotate(0deg); }
 }
 
+@keyframes lockPulse {
+  0%, 100% {
+    border-color: rgba(255, 0, 51, 0.45);
+    box-shadow: 0 0 0px rgba(255, 0, 51, 0);
+  }
+  50% {
+    border-color: rgba(255, 0, 51, 0.9);
+    box-shadow: 0 0 18px rgba(255, 0, 51, 0.35);
+  }
+}
+
 /* Mobile Media Queries */
 @media (max-width: 820px) {
   .nav-desktop {
@@ -242,6 +253,14 @@ body {
   }
   .nav-mobile-btn {
     display: flex !important;
+  }
+
+  /* Hide the sponsor bar and IG button on mobile — keeps header clean */
+  .sponsor-bar-desktop {
+    display: none !important;
+  }
+  .nav-ig-btn {
+    display: none !important;
   }
 }
 
@@ -251,5 +270,11 @@ body {
   }
   .nav-desktop {
     display: flex !important;
+  }
+  .sponsor-bar-desktop {
+    display: block !important;
+  }
+  .nav-ig-btn {
+    display: inline-flex !important;
   }
 }
